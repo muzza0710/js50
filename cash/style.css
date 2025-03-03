@@ -1,0 +1,24 @@
+body {
+    box-sizing: border-box;
+    background-color: aquamarine;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: space-around;
+}
+
