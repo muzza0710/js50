@@ -5,15 +5,30 @@ const input = document.getElementById("change");
 const change_slider = document.getElementById("change-slider");
 const get_coins_button = document.getElementById("get-coins");
 const canvas_div = document.querySelector(".canvas-container");
-const img = document.getElementById("mario-block");
 const background = document.getElementById("mario-background");
 
-const canvas = document.createElement("canvas");
+const canvas = document.getElementById("coins-canvas");
 const ctx = canvas.getContext("2d");
+
 
 // global variables
 const bg_color = "black";
 
+const img_srcs = {
+    quarters: "assets\\Quarter.png",
+    dimes: "assets\\Dime.png",
+    nickles: "assets\\Nickel.png",
+    pennies: "assets\\Penny.png"
+}
+
+let imgs = {};
+for (const key in img_srcs) {
+    if (img_srcs.hasOwnProperty(key)) {
+      img = document.createElement("img");
+      img.src = img_srcs[key];
+      imgs[key] = img;
+    }
+  }
 // event listeners
  get_coins_button.addEventListener("click", (event) => {
     
@@ -22,8 +37,9 @@ const bg_color = "black";
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent the form from submitting the traditional way
-    console.log(input.value);
+    clear_canvas();
     console.log(get_coins(input.value));
+    draw_coins(get_coins(input.value));
 });
 
 change_slider.oninput = function () {
@@ -32,11 +48,8 @@ change_slider.oninput = function () {
 
 
 function clear_canvas(color=bg_color, img=false){
-    if (!img){
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
 function get_coins(change){
@@ -67,4 +80,24 @@ function get_coins(change){
         coins.pennies++;
     }
     return coins;
+}
+
+function draw_coins(coins){
+    let x = 0;
+    let y = 0;
+    for (const key in coins) {
+        if (coins.hasOwnProperty(key)) {
+          if (coins[key] > 0){
+            for (let i = 0; i < coins[key]; i++){
+                if (x > canvas.width - 100){
+                    x = 0;
+                    y += 100;
+                }
+                ctx.drawImage(imgs[key], x, y, 100, 100);
+                x += 100;
+            }
+          }
+           
+        }
+      }
 }
