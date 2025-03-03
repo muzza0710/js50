@@ -10,6 +10,8 @@ const background = document.getElementById("mario-background");
 const canvas = document.getElementById("coins-canvas");
 const ctx = canvas.getContext("2d");
 
+change_slider.value = input.value;
+
 
 // global variables
 const bg_color = "black";
@@ -30,11 +32,6 @@ for (const key in img_srcs) {
     }
   }
 // event listeners
- get_coins_button.addEventListener("click", (event) => {
-    
- });
-
-
 form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent the form from submitting the traditional way
     clear_canvas();
@@ -44,6 +41,10 @@ form.addEventListener("submit", (event) => {
 
 change_slider.oninput = function () {
     input.value = this.value;
+}
+
+input.oninput = function () {
+    change_slider.value = this.value;
 }
 
 
