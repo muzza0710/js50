@@ -1,31 +1,3 @@
-// let plaintext = "abc";
-// let key = 5;
-// let i = 0;
-// let ciphertext = plaintext.slice();
-// // encrypt each letter of plaintext with key
-// while (plaintext[i] != '\0')
-// {
-//     ciphertext[i] = encrypt_char(plaintext[i], key);
-//     i++;
-// }
-// printf("ciphertext: %s\n", ciphertext);
-
-
-// function encrypt_char(char c, int key)
-// {
-//     if (isalpha(c))
-//     {
-//         char base = isupper(c) ? 'A' : 'a';
-
-//         // ensures correct wrapping if c + key is passed z in alphabet
-//         return (c - base + key) % 26 + base;
-//     }
-//     return c;
-// }
-
-// 
-
-
 const textArea = document.querySelector("textarea");
 const keyInput = document.getElementById("key-input");
 const form = document.querySelector("form");
@@ -38,25 +10,27 @@ form.addEventListener("submit", (form) => {
 });
 
 function encrypt_text(text, key){
+    // create array from string so it can be manipulated (is mutable)
     ciphertext = text.split();
+    // go through each char in the text
     for (let i = 0, len = text.length; i < len; i++){
+        // if char is upper case the base char is 'A' else its 'a'
         let base = text.toUpperCase().at(i) === text.at(i) ? 'A' : 'a';
+        // get ascii value of base char
         let baseCode = base.charCodeAt(0);
-        // console.log(text.at(i))
         if (text.at(i).match(/[a-z]/gi)){
-            // ciphertext[i] = String.fromCharCode((text.charCodeAt(i) + key - base) % 26 + base);
+            // get ascii value of char at location i
             let c = (text.charCodeAt(i));
-            console.log(typeof(c))
-            let x = (c - baseCode + key) % 26 + baseCode;
-            console.log(`c: ${c}`)
-            console.log(`x: ${x}`)
-            console.log(`key: ${typeof(key)}`)
-            console.log(`baseCode: ${baseCode}`)
-            ciphertext[i] = String.fromCharCode(x)
+            // ensures correct wrapping for encoded char
+            let encodedChar = (c - baseCode + key) % 26 + baseCode;
+            // converts to ascii value back to an actual char
+            ciphertext[i] = String.fromCharCode(encodedChar)
         }
         else {
+            // if char is not an alpha char just add the original char to the array
             ciphertext[i] = text.at(i);
         }
     }
+    // return array converted to a string
     return ciphertext.join("");
 }
