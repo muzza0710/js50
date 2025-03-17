@@ -28,3 +28,22 @@ a:hover {
 }
 
 
+input[type="file"]::file-selector-button,
+input[type="file"]::-webkit-file-upload-button, button {
+    color: #fff;
+    margin: 1rem;
+    padding: .5rem .6rem;
+    text-align: center;
+    transition: 1s;
+    background: #3aaeff;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+}
+
+input[type="file"]::file-selector-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover, button:hover {
+    box-shadow: 0 0.6em 0.5em -0.4em #007bff;
+    transform: translateY(-0.25em);
+    background: #0056b3;
+}
