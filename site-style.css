@@ -47,3 +47,10 @@ input[type="file"]::-webkit-file-upload-button:hover, button:hover {
     transform: translateY(-0.25em);
     background: #0056b3;
 }
+
+textarea {
+    padding: 1rem;
+    border-radius: 1rem;
+    scrollbar-width: none;
+    border: none;
+}
