@@ -4,6 +4,12 @@
     justify-content: space-around;
 }
 
+div.encrypt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #result {
     text-align: center;
 }

@@ -1,11 +1,12 @@
 const textArea = document.querySelector("textarea");
+const encryptInput = document.getElementById("file-input-encrypt")
 const keyInput = document.getElementById("key-input");
 const form = document.querySelector("form");
-const result_para = document.getElementById("result");
+const resultPara = document.getElementById("result");
 
 form.addEventListener("submit", (form) => {
     form.preventDefault();
-    result_para.innerText = encrypt_text(textArea.value, parseInt(keyInput.value));
+    resultPara.innerText = encrypt_text(textArea.value, parseInt(keyInput.value));
     textArea.value = ""
 });
 
@@ -34,3 +35,31 @@ function encrypt_text(text, key){
     // return array converted to a string
     return ciphertext.join("");
 }
+
+encryptInput.addEventListener("input", (event) => {
+    // get first file in files list (only file)
+    const file = event.target.files[0];
+    if (!file){
+        alert("file not loaded");
+        return;
+    }
+    // create file reader 
+    const reader = new FileReader();
+
+    // read the file 
+    reader.readAsText(file);
+
+    // when full file read:
+    reader.onload = (e) => {
+        console.log(e);
+
+        const result = e.target.result;
+        textArea.textContent = result;
+        event.target.value = '';
+    }
+
+    // if error reading file
+    reader.onerror = (e) => {
+        console.log(e);
+    }
+})
