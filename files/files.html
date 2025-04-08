@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../site-style.css">
+    <title>file manipulation</title>
+</head>
+<body>
+    <header>
+        <h1><a href="../index.html">This is JS50</a></h1>
+    </header>
+    <main>
+        <h2>This is file manipulation</h2>
+        <label for="fileInput-encrypt">Encrypt File -></label>
+        <input type="file" id="fileInput-encrypt" accept=".txt" class="button" />
+        <label for="encrypt-key">key:</label>
+        <input type="number" id="encrypt-key" min="0" value="2">
+        <br>
+        <label for="fileInput-decrypt">Decrypt File -></label>
+        <input type="file" id="fileInput-decrypt" accept=".txt" class="button" />
+        <label for="decrypt-key">key:</label>
+        <input type="number" id="decrypt-key" min="0" value="2">
+        <p id="fileContent" style="white-space: pre-wrap;"></p>
+        <a id="downloadLink" style="display:none;">Download</a>
+    </main>
+</body>
+</html>
