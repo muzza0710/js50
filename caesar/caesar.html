@@ -14,6 +14,17 @@
     </header>
     <main>
         <h2>This is Caesar</h2>
+        <p>
+            This is an implementation of cs50 problem set <a href="https://cs50.harvard.edu/x/2025/psets/2/caesar/">Caesar</a>
+            where a string of plain text is encrypted based on a provided key. the encryption simply shifts each letter by the key, so with a key of 1, 'a' would become 'b' etc
+        </p>
+        <p>
+            an important part of this task is to ensure that letters 'wrap' correctly, so in the above eg 'z' would become 'a', 
+            also letters should maintain their original case and any none alphabet characters (punctuation, numbers etc) should be left unchanged.
+        </p>
+        <p>
+            Finally if a key above 26 is provided this should also wrap, so a key of 27 for example would be the equivalent of a key of 1. 
+        </p>
         <div class="form-container">
             <form action="submit" id="caesar-form">
                 <div>
@@ -25,12 +36,12 @@
                 <button class="btn" id="submit-btn" type="submit">Submit</button>
             </form>
         </div>
+        <p id="result"></p>
         <div class="encrypt">
             <label for="file-input-encrypt">Load From File:</label>
             <input type="file" id="file-input-encrypt" accept=".txt" class="button" />
         </div>
         <div class="para-container">
-            <p id="result"></p>
         </div>
     </main>
 </body>
