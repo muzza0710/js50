@@ -14,7 +14,7 @@ change_slider.value = input.value;
 
 
 // global variables
-const bg_color = "black";
+const bg_color = "aquamarine";
 
 const img_srcs = {
     quarters: "assets\\Quarter.png",
@@ -92,10 +92,10 @@ function draw_coins(coins){
             for (let i = 0; i < coins[key]; i++){
                 if (x > canvas.width - 100){
                     x = 0;
-                    y += 100;
+                    y += 110;
                 }
                 ctx.drawImage(imgs[key], x, y, 100, 100);
-                x += 100;
+                x += 110;
             }
           }
            
