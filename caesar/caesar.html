@@ -31,9 +31,13 @@
                     <textarea rows="5" cols = 50 col name="text-input" type="textarea" id="text-input" placeholder="Add text here" autofocus ></textarea>
                 </div>
                 <div>
+                    <label for="key-input">Encryption Key:</label>
                     <input type="number" name="key-input" id="key-input" value="1">
                 </div>
-                <button class="btn" id="submit-btn" type="submit">Submit</button>
+                <div class="btn-container">
+                    <button class="btn" id="submit-btn" type="submit">View Text</button>
+                    <button class="btn" id="save-btn" type="button">Save Encrypted Text</button>
+                </div>
             </form>
         </div>
         <p id="result"></p>

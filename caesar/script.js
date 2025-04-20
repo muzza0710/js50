@@ -3,14 +3,9 @@ const encryptInput = document.getElementById("file-input-encrypt")
 const keyInput = document.getElementById("key-input");
 const form = document.querySelector("form");
 const resultPara = document.getElementById("result");
+const saveBtn = document.getElementById("save-btn");
 
-form.addEventListener("submit", (form) => {
-    form.preventDefault();
-    resultPara.innerText = encrypt_text(textArea.value, parseInt(keyInput.value));
-    textArea.value = ""
-});
-
-function encrypt_text(text, key){
+function encrypt_text(text, key, decrypt=false){
     // create array from string so it can be manipulated (is mutable)
     ciphertext = text.split();
     // go through each char in the text
@@ -19,11 +14,12 @@ function encrypt_text(text, key){
         let base = text.toUpperCase().at(i) === text.at(i) ? 'A' : 'a';
         // get ascii value of base char
         let baseCode = base.charCodeAt(0);
+        // if char is alpha 
         if (text.at(i).match(/[a-z]/gi)){
             // get ascii value of char at location i
             let c = (text.charCodeAt(i));
             // ensures correct wrapping for encoded char
-            let encodedChar = (c - baseCode + key) % 26 + baseCode;
+            let encodedChar = decrypt === false ? (c - baseCode + key) % 26 + baseCode : (c - baseCode - key + 26) % 26 + baseCode ;
             // converts to ascii value back to an actual char
             ciphertext[i] = String.fromCharCode(encodedChar)
         }
@@ -34,7 +30,24 @@ function encrypt_text(text, key){
     }
     // return array converted to a string
     return ciphertext.join("");
+};
+
+function save_text_to_file(text){
+    let blobdtMIME =
+        new Blob([text], { type: "text/plain" })
+    let url = URL.createObjectURL(blobdtMIME)
+    let anele = document.createElement("a")
+    anele.setAttribute("download", "Downloaded Successfully");
+    anele.href = url;
+    anele.click();
+    console.log(blobdtMIME)
 }
+
+form.addEventListener("submit", (form) => {
+    form.preventDefault();
+    resultPara.innerText = encrypt_text(textArea.value, parseInt(keyInput.value));
+    textArea.value = ""
+});
 
 encryptInput.addEventListener("input", (event) => {
     // get first file in files list (only file)
@@ -62,4 +75,11 @@ encryptInput.addEventListener("input", (event) => {
     reader.onerror = (e) => {
         console.log(e);
     }
-})
+});
+
+saveBtn.addEventListener("click", (e) => {
+    // encrypt_text(textArea.value, keyInput.value);
+    console.log("text saved:", encrypt_text(textArea.value, parseInt(keyInput.value)));
+    save_text_to_file(encrypt_text(textArea.value, parseInt(keyInput.value)));
+    textArea.value = "";
+});
