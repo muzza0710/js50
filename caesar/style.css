@@ -25,4 +25,10 @@ form {
     width: max-content;
 }
 
+#key-input {
+    width: 2rem;
+    border-radius: .2rem;
+    border: none;
+}
+
 
