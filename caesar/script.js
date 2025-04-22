@@ -37,7 +37,7 @@ function save_text_to_file(text){
         new Blob([text], { type: "text/plain" })
     let url = URL.createObjectURL(blobdtMIME)
     let anele = document.createElement("a")
-    anele.setAttribute("download", "Downloaded Successfully");
+    anele.setAttribute("download", "encrypted_text");
     anele.href = url;
     anele.click();
     console.log(blobdtMIME)
