@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../site-style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Mario</title>
 </head>
 <body>
@@ -14,6 +14,11 @@
     </header>
     <main>
         <h2>This is Mario</h2>
+        <div class="canvas-container">
+            <canvas height="1"></canvas>
+        </div>
+        <img src="assets\mario_box400x400.png" alt="a mario block" hidden id="mario-block">
+        <img src="assets\mario_wallpaper.jpg" alt="a mario background scene" hidden id="mario-background">
         <div class="form-container">
             <form action="submit">
                 <label for="height">Height:</label>
@@ -23,9 +28,6 @@
                 <button class="mario-more" type="button">Mario-more</button>
             </form>
         </div>
-        <div class="canvas-container"></div>
-        <img src="assets\mario_box400x400.png" alt="a mario block" hidden id="mario-block">
-        <img src="assets\mario_wallpaper.jpg" alt="a mario background scene" hidden id="mario-background">
     </main>
 </body>
 </html>

@@ -1,6 +1,8 @@
+
+
 body {
     box-sizing: border-box;
-    background-color: aquamarine;
+    background-color: var(--bg-color);
 }
 
 h1 {
@@ -9,6 +11,9 @@ h1 {
 
 h2 {
     text-align: center;
+}
+canvas {
+    background-color: var(--bg-color);
 }
 
 .form-container {
