@@ -1,6 +1,10 @@
+:root {
+    --bg-color: aquamarine;
+}
+
 body {
     box-sizing: border-box;
-    background-color: aquamarine;
+    background-color: var(--bg-color)
 }
 
 h1 {
